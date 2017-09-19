@@ -19,6 +19,7 @@ namespace EP.CursoMvc.Domain.Entities
         public DateTime DataNascimento { get; set; }
         public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
+        public virtual ICollection<Endereco> Enderecos { get; set; }
 
     }
 }
