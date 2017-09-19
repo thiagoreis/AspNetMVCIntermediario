@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EP.CursoMvc.Domain.Entities
 {
-    class Endereco
+    public class Endereco
     {
         public Endereco()
         {

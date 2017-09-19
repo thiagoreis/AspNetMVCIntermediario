@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EP.CursoMvc.Domain.Entities
+
 {
-    class Cliente
+    public class Cliente
     {
         public Cliente()
         {
