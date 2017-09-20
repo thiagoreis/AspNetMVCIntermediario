@@ -35,37 +35,39 @@ namespace EP.CursoMVC.Application
 
         public ClienteViewModel ObterPorId(Guid id)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorId(id));
         }
 
         public IEnumerable<ClienteViewModel> ObterTodos()
         {
-            throw new NotImplementedException();
+            return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterTodos());
         }
 
         public ClienteViewModel ObterPorCpf(string cpf)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorCpf(cpf));
         }
 
         public ClienteViewModel ObterPorEmail(string email)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<ClienteViewModel>(_clienteRepository.ObterPorEmail(email));
         }
 
-        public ClienteViewModel Atualizar(ClienteViewModel clienteView)
+        public ClienteViewModel Atualizar(ClienteViewModel clienteViewModel)
         {
-            throw new NotImplementedException();
+            var cliente = Mapper.Map<Cliente>(clienteViewModel);
+            _clienteRepository.Atualizar(cliente);
+            return clienteViewModel;
         }
 
         public void Remover(Guid id)
         {
-            throw new NotImplementedException();
+            _clienteRepository.Remover(id);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _clienteRepository.Dispose();
         }
     }
 }
