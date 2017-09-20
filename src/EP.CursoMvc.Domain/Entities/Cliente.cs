@@ -12,6 +12,7 @@ namespace EP.CursoMvc.Domain.Entities
         public Cliente()
         {
             ClienteId = Guid.NewGuid();
+            Enderecos = new List<Endereco>();
         }
         public Guid ClienteId { get; set; }
         public string Nome { get; set; }
