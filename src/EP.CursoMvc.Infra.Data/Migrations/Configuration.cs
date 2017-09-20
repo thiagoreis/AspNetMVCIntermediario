@@ -10,6 +10,7 @@ namespace EP.CursoMvc.Infra.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+           
         }
 
         protected override void Seed(EP.CursoMvc.Infra.Data.Context.CursoMvcContext context)

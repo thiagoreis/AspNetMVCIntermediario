@@ -22,5 +22,6 @@ namespace EP.CursoMvc.Domain.Entities
         public bool Ativo { get; set; }
         public virtual ICollection<Endereco> Enderecos { get; set; }
 
+
     }
 }
