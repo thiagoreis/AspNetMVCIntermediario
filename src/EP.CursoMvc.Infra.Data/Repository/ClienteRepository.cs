@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EP.CursoMvc.Domain.Entities;
 using EP.CursoMvc.Domain.Interfaces.Repository;
 
 namespace EP.CursoMvc.Infra.Data.Repository
 {
-    class ClienteRepository : Repository<Cliente>, IClienteRepository
+    public class ClienteRepository : Repository<Cliente>, IClienteRepository
     {
         public Cliente ObterPorCpf(string cpf)
         {
@@ -36,7 +33,11 @@ namespace EP.CursoMvc.Infra.Data.Repository
         public override IEnumerable<Cliente> ObterTodos()
         {
             return Db.Clientes.OrderBy(c => c.DataCadastro);
+        }
 
+        public override Cliente ObterPorId(Guid id)
+        {
+            return DbSet.Find(id);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EP.CursoMvc.Domain.Entities;
 
 namespace EP.CursoMvc.Domain.Interfaces.Repository
@@ -9,7 +8,5 @@ namespace EP.CursoMvc.Domain.Interfaces.Repository
         Cliente ObterPorCpf(string cpf);
         Cliente ObterPorEmail(string email);
         IEnumerable<Cliente> ObterAtivos();
-
     }
-
 }
