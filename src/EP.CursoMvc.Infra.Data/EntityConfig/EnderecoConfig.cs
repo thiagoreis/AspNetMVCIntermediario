@@ -34,7 +34,7 @@ namespace EP.CursoMvc.Infra.Data.EntityConfig
                 .WithMany(c => c.Enderecos)
                 .HasForeignKey(e => e.ClienteId);
 
-            ToTable("Enderecos");
+            ToTable("Enderecos"); 
         }
     }
 }
