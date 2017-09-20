@@ -40,7 +40,7 @@ namespace EP.CursoMVC.Application
 
         public IEnumerable<ClienteViewModel> ObterTodos()
         {
-            return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterTodos());
+            return Mapper.Map<IEnumerable<ClienteViewModel>>(_clienteRepository.ObterAtivos());
         }
 
         public ClienteViewModel ObterPorCpf(string cpf)
