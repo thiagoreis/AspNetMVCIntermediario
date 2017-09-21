@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using EP.CursoMvc.Infra.CrossCutting.MvcFilters;
 using EP.CursoMVC.Application.ViewModels;
 using EP.CursoMvc.UI.Site.Models;
@@ -14,6 +15,7 @@ using EP.CursoMVC.Application;
 namespace EP.CursoMvc.UI.Site.Controllers
 {
     [Authorize]
+    [RoutePrefix("gestao/cadastros")]
     public class ClientesController : Controller
     {
         private readonly ClienteAppService _clienteAppService;
@@ -25,6 +27,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
 
         // GET: Clientes
         [ClaimsAuthorize("PermissoesCliente", "CL")]
+        [Route("listar-clientes")]
         public ActionResult Index()
         {
             return View(_clienteAppService.ObterTodos());
@@ -32,6 +35,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
 
         // GET: Clientes/Details/5
         [ClaimsAuthorize("PermissoesCliente", "CD")]
+        [Route("{id:guid}/detalhe-cliente")]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -48,6 +52,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
 
         // GET: Clientes/Create
         [ClaimsAuthorize("PermissoesCliente", "CI")]
+        [Route("novo-cliente")]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +64,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ClaimsAuthorize("PermissoesCliente", "CI")]
+        [Route("novo-cliente")]
         public ActionResult Create(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             if (ModelState.IsValid)
@@ -72,6 +78,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
 
         // GET: Clientes/Edit/5
         [ClaimsAuthorize("PermissoesCliente", "CE")]
+        [Route("{id:guid}/editar-cliente")]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -92,6 +99,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ClaimsAuthorize("PermissoesCliente", "CE")]
+        [Route("{id:guid}/editar-cliente")] 
         public ActionResult Edit(ClienteViewModel clienteViewModel)
         {
             if (ModelState.IsValid)
@@ -104,11 +112,12 @@ namespace EP.CursoMvc.UI.Site.Controllers
 
         // GET: Clientes/Delete/5
         [ClaimsAuthorize("PermissoesCliente", "CX")]
+        [Route("{id:guid}/excluir-cliente")]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
             }
             var clienteViewModel = _clienteAppService.ObterPorId(id.Value);
             if (clienteViewModel == null)
