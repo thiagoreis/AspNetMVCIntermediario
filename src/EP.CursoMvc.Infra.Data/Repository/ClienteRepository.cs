@@ -55,7 +55,7 @@ namespace EP.CursoMvc.Infra.Data.Repository
                     return c;
                 }, new { sid = id }, splitOn: "ClienteId, EnderecoId");
 
-            throw new Exception("THE BOMB HAS BEEN PLANTED!!!!!");
+            //throw new Exception("THE BOMB HAS BEEN PLANTED!!!!!");
 
             return cliente.FirstOrDefault();
         }

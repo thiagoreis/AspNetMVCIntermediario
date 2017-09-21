@@ -9,7 +9,7 @@ namespace EP.CursoMvc.UI.Site.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(EP.CursoMvc.UI.Site.Models.ApplicationDbContext context)

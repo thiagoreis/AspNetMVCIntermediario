@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using EP.CursoMvc.Infra.CrossCutting.MvcFilters;
 using EP.CursoMVC.Application.ViewModels;
 using EP.CursoMvc.UI.Site.Models;
 using EP.CursoMVC.Application;
 
 namespace EP.CursoMvc.UI.Site.Controllers
 {
+    [Authorize]
     public class ClientesController : Controller
     {
         private readonly ClienteAppService _clienteAppService;
@@ -22,12 +24,14 @@ namespace EP.CursoMvc.UI.Site.Controllers
         }
 
         // GET: Clientes
+        [ClaimsAuthorize("PermissoesCliente", "CL")]
         public ActionResult Index()
         {
             return View(_clienteAppService.ObterTodos());
         }
 
         // GET: Clientes/Details/5
+        [ClaimsAuthorize("PermissoesCliente", "CD")]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -43,6 +47,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
         }
 
         // GET: Clientes/Create
+        [ClaimsAuthorize("PermissoesCliente", "CI")]
         public ActionResult Create()
         {
             return View();
@@ -53,6 +58,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("PermissoesCliente", "CI")]
         public ActionResult Create(ClienteEnderecoViewModel clienteEnderecoViewModel)
         {
             if (ModelState.IsValid)
@@ -65,6 +71,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
         }
 
         // GET: Clientes/Edit/5
+        [ClaimsAuthorize("PermissoesCliente", "CE")]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -84,6 +91,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ClaimsAuthorize("PermissoesCliente", "CE")]
         public ActionResult Edit(ClienteViewModel clienteViewModel)
         {
             if (ModelState.IsValid)
@@ -95,6 +103,7 @@ namespace EP.CursoMvc.UI.Site.Controllers
         }
 
         // GET: Clientes/Delete/5
+        [ClaimsAuthorize("PermissoesCliente", "CX")]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
